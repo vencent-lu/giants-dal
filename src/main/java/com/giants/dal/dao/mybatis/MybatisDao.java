@@ -5,7 +5,7 @@ package com.giants.dal.dao.mybatis;
 
 import java.util.List;
 
-import com.giants.common.tools.PageCondition;
+import com.giants.common.tools.PageQueryCondition;
 import com.giants.dal.dao.GiantsDao;
 
 /**
@@ -14,9 +14,9 @@ import com.giants.dal.dao.GiantsDao;
  */
 public interface MybatisDao<T> extends GiantsDao<T> {
 	
-	List<T> search(PageCondition pageCondition);
+	List<T> search(PageQueryCondition<?> pageCondition);
 
-	int searchCount(PageCondition pageCondition);
+	int searchCount(PageQueryCondition<?> pageCondition);
 	
 	List<Object> searchForBeanList(Object parameterBean);
 
