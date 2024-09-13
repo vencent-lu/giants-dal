@@ -4,7 +4,7 @@
 
   <groupId>com.github.vencent-lu</groupId>
   <artifactId>giants-dal</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
   
   <name>giants-dal</name>
@@ -103,8 +103,8 @@
     <project-name>giants-dal</project-name>
 	
 	<!-- 依赖库版本定义 -->
-	<spring.version>4.2.5.RELEASE</spring.version>
-	<hibernate.version>3.6.10.Final</hibernate.version>
+	<spring.version>4.3.20.RELEASE</spring.version>
+	<hibernate.version>5.3.20.Final</hibernate.version>
     <ibatis.version>2.3.4.726</ibatis.version>
         
     <!-- Plugin的属性定义 -->
