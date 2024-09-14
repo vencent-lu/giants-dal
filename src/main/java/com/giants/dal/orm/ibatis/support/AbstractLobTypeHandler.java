@@ -45,7 +45,6 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
  * @since 1.1.5
  * @see org.springframework.jdbc.support.lob.LobHandler
  * @see org.springframework.jdbc.support.lob.LobCreator
- * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#setLobHandler
  */
 public abstract class AbstractLobTypeHandler extends BaseTypeHandler {
 
@@ -64,7 +63,6 @@ public abstract class AbstractLobTypeHandler extends BaseTypeHandler {
 	/**
 	 * Constructor used by iBATIS: fetches config-time LobHandler from
 	 * SqlMapClientFactoryBean.
-	 * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#getConfigTimeLobHandler
 	 */
 	public AbstractLobTypeHandler() {
 		this(SqlMapClientFactoryBean.getConfigTimeLobHandler());
@@ -72,6 +70,7 @@ public abstract class AbstractLobTypeHandler extends BaseTypeHandler {
 
 	/**
 	 * Constructor used for testing: takes an explicit LobHandler.
+	 * @param lobHandler the LobHandler to use
 	 */
 	protected AbstractLobTypeHandler(LobHandler lobHandler) {
 		if (lobHandler == null) {

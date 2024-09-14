@@ -39,14 +39,12 @@ import org.springframework.jdbc.support.lob.LobHandler;
  *
  * @author Juergen Hoeller
  * @since 1.1.5
- * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#setLobHandler
  */
 public class BlobSerializableTypeHandler extends AbstractLobTypeHandler {
 
 	/**
 	 * Constructor used by iBATIS: fetches config-time LobHandler from
 	 * SqlMapClientFactoryBean.
-	 * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#getConfigTimeLobHandler
 	 */
 	public BlobSerializableTypeHandler() {
 		super();
@@ -54,6 +52,7 @@ public class BlobSerializableTypeHandler extends AbstractLobTypeHandler {
 
 	/**
 	 * Constructor used for testing: takes an explicit LobHandler.
+	 * @param lobHandler the LobHandler to use
 	 */
 	protected BlobSerializableTypeHandler(LobHandler lobHandler) {
 		super(lobHandler);

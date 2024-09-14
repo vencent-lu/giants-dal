@@ -23,6 +23,7 @@ public class HibernateDaoSupport extends DaoSupport {
 	 * Will automatically create a HibernateTemplate for the given SessionFactory.
 	 * @see #createHibernateTemplate
 	 * @see #setHibernateTemplate
+	 * @param sessionFactory the Hibernate SessionFactory
 	 */
 	public final void setSessionFactory(SessionFactory sessionFactory) {
 		if (this.hibernateTemplate == null || sessionFactory != this.hibernateTemplate.getSessionFactory()) {
@@ -54,6 +55,7 @@ public class HibernateDaoSupport extends DaoSupport {
 	 * Set the HibernateTemplate for this DAO explicitly,
 	 * as an alternative to specifying a SessionFactory.
 	 * @see #setSessionFactory
+	 * @param hibernateTemplate the HibernateTemplate instance
 	 */
 	public final void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;

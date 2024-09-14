@@ -70,7 +70,7 @@ public class DalShardingRoutingConfig implements Serializable {
 	}
 
 	/**
-	 * @param hashAlgorithms the hashAlgorithms to set
+	 * @param algorithms the hashAlgorithms to set
 	 */
 	public void setHashAlgorithms(List<Algorithm> algorithms) {
 		this.algorithms = algorithms;

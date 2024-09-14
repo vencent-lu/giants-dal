@@ -26,6 +26,7 @@ public class SqlMapClientDaoSupport extends DaoSupport {
 	 * Set the JDBC DataSource to be used by this DAO.
 	 * Not required: The SqlMapClient might carry a shared DataSource.
 	 * @see #setSqlMapClient
+	 * @param dataSource the JDBC DataSource
 	 */
 	public final void setDataSource(DataSource dataSource) {
 		if (!this.externalTemplate) {
@@ -44,6 +45,7 @@ public class SqlMapClientDaoSupport extends DaoSupport {
 	 * Set the iBATIS Database Layer SqlMapClient to work with.
 	 * Either this or a "sqlMapClientTemplate" is required.
 	 * @see #setSqlMapClientTemplate
+	 * @param sqlMapClient the SqlMapClient
 	 */
 	public final void setSqlMapClient(SqlMapClient sqlMapClient) {
 		if (!this.externalTemplate) {
@@ -62,6 +64,7 @@ public class SqlMapClientDaoSupport extends DaoSupport {
 	 * Set the SqlMapClientTemplate for this DAO explicitly,
 	 * as an alternative to specifying a SqlMapClient.
 	 * @see #setSqlMapClient
+	 * @param sqlMapClientTemplate the SqlMapClientTemplate
 	 */
 	public void setSqlMapClientTemplate(SqlMapClientTemplate sqlMapClientTemplate) {
 		Assert.notNull(sqlMapClientTemplate, "SqlMapClientTemplate must not be null");

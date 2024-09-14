@@ -37,14 +37,12 @@ import org.springframework.jdbc.support.lob.LobHandler;
  *
  * @author Juergen Hoeller
  * @since 1.1.5
- * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#setLobHandler
  */
 public class ClobStringTypeHandler extends AbstractLobTypeHandler {
 
 	/**
 	 * Constructor used by iBATIS: fetches config-time LobHandler from
 	 * SqlMapClientFactoryBean.
-	 * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#getConfigTimeLobHandler
 	 */
 	public ClobStringTypeHandler() {
 		super();
@@ -52,6 +50,7 @@ public class ClobStringTypeHandler extends AbstractLobTypeHandler {
 
 	/**
 	 * Constructor used for testing: takes an explicit LobHandler.
+	 * @param lobHandler the explicit LobHandler to use
 	 */
 	protected ClobStringTypeHandler(LobHandler lobHandler) {
 		super(lobHandler);

@@ -34,14 +34,12 @@ import org.springframework.jdbc.support.lob.LobHandler;
  *
  * @author Juergen Hoeller
  * @since 1.1.5
- * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#setLobHandler
  */
 public class BlobByteArrayTypeHandler extends AbstractLobTypeHandler {
 
 	/**
 	 * Constructor used by iBATIS: fetches config-time LobHandler from
 	 * SqlMapClientFactoryBean.
-	 * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#getConfigTimeLobHandler
 	 */
 	public BlobByteArrayTypeHandler() {
 		super();
@@ -49,6 +47,7 @@ public class BlobByteArrayTypeHandler extends AbstractLobTypeHandler {
 
 	/**
 	 * Constructor used for testing: takes an explicit LobHandler.
+	 * @param lobHandler the LobHandler to use
 	 */
 	protected BlobByteArrayTypeHandler(LobHandler lobHandler) {
 		super(lobHandler);

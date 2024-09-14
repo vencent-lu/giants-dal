@@ -38,8 +38,6 @@ import org.springframework.util.Assert;
  * @since 24.02.2004
  * @see #setSqlMapClient
  * @see #setSqlMapClientTemplate
- * @see org.springframework.orm.ibatis.SqlMapClientTemplate
- * @see org.springframework.orm.ibatis.SqlMapClientTemplate#setExceptionTranslator
  */
 public abstract class SqlMapClientDaoSupport extends DaoSupport {
 
@@ -52,6 +50,7 @@ public abstract class SqlMapClientDaoSupport extends DaoSupport {
 	 * Set the JDBC DataSource to be used by this DAO.
 	 * Not required: The SqlMapClient might carry a shared DataSource.
 	 * @see #setSqlMapClient
+	 * @param dataSource the JDBC DataSource
 	 */
 	public final void setDataSource(DataSource dataSource) {
 		if (!this.externalTemplate) {
@@ -61,6 +60,7 @@ public abstract class SqlMapClientDaoSupport extends DaoSupport {
 
 	/**
 	 * Return the JDBC DataSource used by this DAO.
+	 * @return the JDBC DataSource (may be <code>null</code>)
 	 */
 	public final DataSource getDataSource() {
 		return this.sqlMapClientTemplate.getDataSource();
@@ -70,6 +70,7 @@ public abstract class SqlMapClientDaoSupport extends DaoSupport {
 	 * Set the iBATIS Database Layer SqlMapClient to work with.
 	 * Either this or a "sqlMapClientTemplate" is required.
 	 * @see #setSqlMapClientTemplate
+	 * @param sqlMapClient the iBATIS Database Layer SqlMapClient
 	 */
 	public final void setSqlMapClient(SqlMapClient sqlMapClient) {
 		if (!this.externalTemplate) {
@@ -79,6 +80,7 @@ public abstract class SqlMapClientDaoSupport extends DaoSupport {
 
 	/**
 	 * Return the iBATIS Database Layer SqlMapClient that this template works with.
+	 * @return the SqlMapClient
 	 */
 	public final SqlMapClient getSqlMapClient() {
 		return this.sqlMapClientTemplate.getSqlMapClient();
@@ -88,6 +90,7 @@ public abstract class SqlMapClientDaoSupport extends DaoSupport {
 	 * Set the SqlMapClientTemplate for this DAO explicitly,
 	 * as an alternative to specifying a SqlMapClient.
 	 * @see #setSqlMapClient
+	 * @param sqlMapClientTemplate the SqlMapClientTemplate
 	 */
 	public final void setSqlMapClientTemplate(SqlMapClientTemplate sqlMapClientTemplate) {
 		Assert.notNull(sqlMapClientTemplate, "SqlMapClientTemplate must not be null");
@@ -98,6 +101,7 @@ public abstract class SqlMapClientDaoSupport extends DaoSupport {
 	/**
 	 * Return the SqlMapClientTemplate for this DAO,
 	 * pre-initialized with the SqlMapClient or set explicitly.
+	 * @return the SqlMapClientTemplate
 	 */
 	public final SqlMapClientTemplate getSqlMapClientTemplate() {
 	  return this.sqlMapClientTemplate;

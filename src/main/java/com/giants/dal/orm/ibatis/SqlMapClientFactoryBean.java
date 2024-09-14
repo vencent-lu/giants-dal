@@ -78,9 +78,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * SqlMapClient, and reset immediately afterwards. It is thus only available
 	 * during configuration.
 	 * @see #setLobHandler
-	 * @see org.springframework.orm.ibatis.support.ClobStringTypeHandler
-	 * @see org.springframework.orm.ibatis.support.BlobByteArrayTypeHandler
-	 * @see org.springframework.orm.ibatis.support.BlobSerializableTypeHandler
+	 * @return LobHandler instance
 	 */
 	public static LobHandler getConfigTimeLobHandler() {
 		return configTimeLobHandlerHolder.get();
@@ -115,6 +113,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * Set the location of the iBATIS SqlMapClient config file.
 	 * A typical value is "WEB-INF/sql-map-config.xml".
 	 * @see #setConfigLocations
+	 * @param configLocation the location of the config file
 	 */
 	public void setConfigLocation(Resource configLocation) {
 		this.configLocations = (configLocation != null ? new Resource[] {configLocation} : null);
@@ -123,6 +122,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	/**
 	 * Set multiple locations of iBATIS SqlMapClient config files that
 	 * are going to be merged into one unified configuration at runtime.
+	 * @param configLocations the locations of the config files
 	 */
 	public void setConfigLocations(Resource[] configLocations) {
 		this.configLocations = configLocations;
@@ -137,6 +137,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * e.g. "/myApp/*-map.xml".
 	 * <p>Note that this feature requires iBATIS 2.3.2; it will not work
 	 * with any previous iBATIS version.
+	 * @param mappingLocations the locations of the mapping files
 	 */
 	public void setMappingLocations(Resource[] mappingLocations) {
 		this.mappingLocations = mappingLocations;
@@ -148,6 +149,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * file. Will be used to resolve placeholders in the config file.
 	 * @see #setConfigLocation
 	 * @see com.ibatis.sqlmap.client.SqlMapClientBuilder#buildSqlMapClient(java.io.InputStream, java.util.Properties)
+	 * @param sqlMapClientProperties the properties to be passed into the SqlMapClientBuilder
 	 */
 	public void setSqlMapClientProperties(Properties sqlMapClientProperties) {
 		this.sqlMapClientProperties = sqlMapClientProperties;
@@ -170,7 +172,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * @see #setTransactionConfigProperties
 	 * @see com.ibatis.sqlmap.client.SqlMapClient#getDataSource
 	 * @see SqlMapClientTemplate#setDataSource
-	 * @see SqlMapClientTemplate#queryForPaginatedList
+	 * @param dataSource the DataSource to be used by iBATIS SQL Maps
 	 */
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -196,6 +198,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * @see org.springframework.jdbc.datasource.DataSourceTransactionManager
 	 * @see SqlMapClientTemplate
 	 * @see com.ibatis.sqlmap.client.SqlMapClient
+	 * @param useTransactionAwareDataSource whether to use a transaction-aware DataSource
 	 */
 	public void setUseTransactionAwareDataSource(boolean useTransactionAwareDataSource) {
 		this.useTransactionAwareDataSource = useTransactionAwareDataSource;
@@ -233,6 +236,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * @see com.ibatis.sqlmap.engine.transaction.jdbc.JdbcTransactionConfig
 	 * @see com.ibatis.sqlmap.engine.transaction.jta.JtaTransactionConfig
 	 * @see com.ibatis.sqlmap.client.SqlMapTransactionManager
+	 * @param transactionConfigClass the TransactionConfig class to use
 	 	 */
 	public void setTransactionConfigClass(Class transactionConfigClass) {
 		if (transactionConfigClass == null || !TransactionConfig.class.isAssignableFrom(transactionConfigClass)) {
@@ -246,7 +250,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * Set properties to be passed to the TransactionConfig instance used
 	 * by this SqlMapClient. Supported properties depend on the concrete
 	 * TransactionConfig implementation used:
-	 * <p><ul>
+	 * <ul>
 	 * <li><b>ExternalTransactionConfig</b> supports "DefaultAutoCommit"
 	 * (default: false) and "SetAutoCommitAllowed" (default: true).
 	 * Note that Spring uses SetAutoCommitAllowed = false as default,
@@ -261,6 +265,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * @see com.ibatis.sqlmap.engine.transaction.external.ExternalTransactionConfig
 	 * @see com.ibatis.sqlmap.engine.transaction.jdbc.JdbcTransactionConfig
 	 * @see com.ibatis.sqlmap.engine.transaction.jta.JtaTransactionConfig
+	 * @param transactionConfigProperties properties to be passed to the TransactionConfig instance
 	 */
 	public void setTransactionConfigProperties(Properties transactionConfigProperties) {
 		this.transactionConfigProperties = transactionConfigProperties;
@@ -271,9 +276,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * Will be exposed at config time for TypeHandler implementations.
 	 * @see #getConfigTimeLobHandler
 	 * @see com.ibatis.sqlmap.engine.type.TypeHandler
-	 * @see org.springframework.orm.ibatis.support.ClobStringTypeHandler
-	 * @see org.springframework.orm.ibatis.support.BlobByteArrayTypeHandler
-	 * @see org.springframework.orm.ibatis.support.BlobSerializableTypeHandler
+	 * @param lobHandler the LobHandler to be used
 	 */
 	public void setLobHandler(LobHandler lobHandler) {
 		this.lobHandler = lobHandler;
@@ -321,6 +324,7 @@ public class SqlMapClientFactoryBean implements FactoryBean<SqlMapClient>, Initi
 	 * @return the SqlMapClient instance (never <code>null</code>)
 	 * @throws IOException if loading the config file failed
 	 * @see com.ibatis.sqlmap.client.SqlMapClientBuilder#buildSqlMapClient
+	 * @param mappingLocations the mapping files to load from
 	 */
 	protected SqlMapClient buildSqlMapClient(
 			Resource[] configLocations, Resource[] mappingLocations, Properties properties)

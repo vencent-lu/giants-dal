@@ -53,12 +53,12 @@ public class Algorithm implements Serializable {
 
 	/**
 	 * @param algorithmClass the algorithmClass to set
-	 * @throws SecurityException 
-	 * @throws NoSuchMethodException 
-	 * @throws InvocationTargetException 
-	 * @throws IllegalArgumentException 
-	 * @throws IllegalAccessException 
-	 * @throws InstantiationException 
+	 * @throws SecurityException security exception
+	 * @throws NoSuchMethodException no such method exception
+	 * @throws InvocationTargetException invocation target exception
+	 * @throws IllegalArgumentException illegal argument exception
+	 * @throws IllegalAccessException illegal access exception
+	 * @throws InstantiationException instantiation exception
 	 */
 	public void setAlgorithmClass(Class<?> algorithmClass)
 			throws InstantiationException, IllegalAccessException,

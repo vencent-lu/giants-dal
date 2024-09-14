@@ -25,9 +25,10 @@ public class DefaultDalShardingRoutingImpl implements DalShardingRouting {
 	
 
 	/**
-	 * @throws XmlMapException 
-	 * @throws XMLParseException 
-	 * @throws XmlDataException 
+	 * @param configFile config file
+	 * @throws XmlMapException mxl map exception
+	 * @throws XMLParseException xml parse exception
+	 * @throws XmlDataException xml data exception
 	 * 
 	 */
 	public DefaultDalShardingRoutingImpl(String configFile) throws XmlMapException, XmlDataException, XMLParseException {
